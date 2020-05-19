@@ -19,6 +19,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 require 'digest'
 require 'pathname'
 require 'yaml'
@@ -218,12 +219,12 @@ end
 # @return [void]
 def extract_artifact!
   recipe_eval do
-    case ::File.extname(cached_tar_path)
-    when /(tar|tgz|tar\.gz|tbz2|tbz|tar\.xz)$/
+    case cached_tar_path
+    when /(tar|tgz|tar\.gz|tbz2|tbz|tar\.xz|tar\.bz2)$/
 
       taropts = [ '-x' ]
       taropts.push('-z') if cached_tar_path.match(/(tgz|tar\.gz)$/)
-      taropts.push('-j') if cached_tar_path.match(/(tbz2|tbz)$/)
+      taropts.push('-j') if cached_tar_path.match(/(tbz2|tbz|tar\.bz2)$/)
       taropts.push('-J') if cached_tar_path.match(/tar\.xz$/)
       taropts = taropts.join(' ')
 
