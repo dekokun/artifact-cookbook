@@ -82,8 +82,8 @@ def load_current_resource
       end
     end
 
-    chef_gem "aws-sdk" do
-      version "2.1.32"
+    chef_gem "aws-sdk-s3" do
+      version "~> 1"
       action :install
     end
 
