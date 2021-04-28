@@ -89,7 +89,7 @@ class Chef
       #
       def retrieve_from_s3(node, source_file, destination_file)
         begin
-          require 'aws-sdk'
+          require 'aws-sdk-s3'
           config = data_bag_config_for(node.chef_environment, DATA_BAG_AWS)
           s3_endpoint, bucket_name, object_name = parse_s3_url(source_file)
           endpoint_parts = s3_endpoint.split('.')
